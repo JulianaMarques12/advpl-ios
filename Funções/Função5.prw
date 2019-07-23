@@ -15,11 +15,12 @@ User function f5c(nNum)
 
 If nNum % 2 == 1
 
-alert ("Este número é impar")
+alert (.F.)
+
 
 Else 
 
-alert ("Este número é par")
+alert (.T.)
 
 Endif
 Return 
