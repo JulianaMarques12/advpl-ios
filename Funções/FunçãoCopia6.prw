@@ -4,7 +4,7 @@
 peso ideal. Para homens, calcular o peso ideal usando a fórmula peso ideal = 72.7 x alt
 - 58 e, para mulheres, peso ideal = 62.1 x alt - 44.7.*/
 
-User function Peso1()
+User function f6c()
 
 // ENTRADA DE DADOS
 

@@ -12,7 +12,7 @@ Salário Bruto = Qtde horas trabalhadas * valor hora
 INSS = 8% do Salário Bruto
 Salário Líquido = Salário Bruno - INSS*/
 
-User Function Func1()
+User Function F7()
 
 Local aVar1 := {}
 Local cNome := ''
