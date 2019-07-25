@@ -8,3 +8,35 @@ b. A média de altura das mulheres;
 c. O número de homens;
 d. O sexo da pessoa mais alta.*/
 
+User function estrep4()
+
+    Local nLinda := 0
+    Local aPessoa := {}
+
+Local cSexo1 := FWInputBox("Digite o sexo da primeira pessoa")
+Local cSexo2 := FWInputBox("Digite o sexo da segunda pessoa")
+Local cSexo3 := FWInputBox("Digite o sexo da terceira pessoa")
+
+Local nAltura1 := Val(FWInputBox("Digite a altura da primeira pessoa"))
+Local nAltura2 := Val(FWInputBox("Digite a altura da segunda pessoa"))
+Local nAltura3 := Val(FWInputBox("Digite a altura da terceira pessoa"))
+
+Local nMenor := nAltura1
+
+/*aAdd(aPessoa, {cSexo1, nAltura1})
+aAdd(aPessoa, {cSexo2, nAltura2})
+aAdd(aPessoa, {cSexo3, nAltura3})
+
+For nLinda := 1 to Len(aPessoa)
+
+If aPessoa[nLinda][2] < nMenor 
+nMenor := aPessoa[nLinda][2]
+    
+EndIf
+ 
+ Next
+ alert(nMenor)*/
+
+ //A descobrir... :(
+
+Return
