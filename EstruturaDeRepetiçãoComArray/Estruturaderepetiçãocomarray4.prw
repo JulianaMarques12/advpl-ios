@@ -22,21 +22,23 @@ Local nAltura2 := Val(FWInputBox("Digite a altura da segunda pessoa"))
 Local nAltura3 := Val(FWInputBox("Digite a altura da terceira pessoa"))
 
 Local nMenor := nAltura1
+Local cSexo  := cSexo1
 
-/*aAdd(aPessoa, {cSexo1, nAltura1})
+aAdd(aPessoa, {cSexo1, nAltura1})
 aAdd(aPessoa, {cSexo2, nAltura2})
 aAdd(aPessoa, {cSexo3, nAltura3})
 
 For nLinda := 1 to Len(aPessoa)
 
-If aPessoa[nLinda][2] < nMenor 
+If nMenor > aPessoa[nLinda][2]
 nMenor := aPessoa[nLinda][2]
-    
-EndIf
- 
- Next
- alert(nMenor)*/
+  alert(nMenor)
 
- //A descobrir... :(
+Elseif nSexo := "Feminino"
+cSexo := aPessoa[nLinda][1]
+
+
+EndIf
+ Next
 
 Return
