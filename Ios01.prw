@@ -13,7 +13,7 @@ Return
 
 //Função que pertence somente a este fonte
 
- Static Function MenuDef()
+Static Function MenuDef()
 
 Return FWMVCMenu('Ios01') //Menu padrão do C.R.U.D
 
@@ -50,7 +50,9 @@ Local oStruct := FWFormStruct(2, "ZA0")
 
 oView:SetModel(ModelDef())
 
+
 oView:AddField("ZA0_VIEW", oStruct, "ZA0MASTER")
 oView:CreateHorizontalBox("BOXZA0", 100)
 oView:SetOwnerView("ZA0_VIEW","BOXZA0")
+//ele linka o componente junto com o box criado
 Return oView
