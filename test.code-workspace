@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "Array"
+		},
+		{
+			"path": "ComponentesVisuais"
+		},
+		{
+			"path": "EstruturaDeDesvio"
+		},
+		{
+			"path": "EstruturaDeRepetição"
+		},
+		{
+			"path": "EstruturaDeRepetiçãoComArray"
+		},
+		{
+			"path": "Funções"
+		}
+	],
+	"settings": {
+		"advpl.workspaceFolders": "c:\\WK\\advpl-ios\\Array;c:\\WK\\advpl-ios\\ComponentesVisuais;c:\\WK\\advpl-ios\\EstruturaDeDesvio;c:\\WK\\advpl-ios\\EstruturaDeRepeti��o;c:\\WK\\advpl-ios\\EstruturaDeRepeti��oComArray;c:\\WK\\advpl-ios\\Fun��es;"
+	}
+}
