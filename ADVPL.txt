@@ -1,0 +1,100 @@
+#include 'Protheus.ch' - incluir biblioteca
+
+user function test()
+   alert("texto")
+return - criar uma funçao
+
+function test()
+return - cria uma funçao para ser usado em todos os arquivo 'include'
+
+static function test()
+return - cria uma funçao para ser usado no mesmo arquivo
+
+main function test()
+return - cria a funçao main
+
+u_test() - chamar a funçao
+
+ConOut("") - Sair comando no console
+
+.T. - .F. - Verdadeiro ou Falso
+
+static variavel - criar variavel global no arquivo
+
+local variavel - criar variavel que so utilizada na funçao
+
+
+aVariavelVetor  - variavel Vetor
+bVariavelbloco - variavel bloco
+cVariavelcaracter - variavel caracter
+dVariavelData - variavel data
+lVariavelLogico - variavel logica
+nVariavelNumerica - variavel numerica
+oVariavelObjeto - variavel objeto
+uVariavelIndefinida - variavel desconhecida
+
+:= - atribuiçao
+
+aArray := {} - array
+
+CToD("dd/mm/aaaa") - string para data
+
+stod(aaaammdd) - converter data para string
+
+str(nValor, nTamanho, nDecimal) - formatar numero com casas decimais
+
+; - continuar linha de codigo
+
+cvaltochar(nvalor) - variavel para string
+val(cValor) - caracter para numerico
+
+msginfo("texto"+"texto") - mostrar o texto
+
+ConOut("Teste de exibição de texto no Console...")  - saida no console
+
+FWInputBox("") - entrada de dados
+
+.And. - condiçao e
+.Or. - condiçao ou
+.Not., ! - condiçao nao
+
+if nNum1 == nNum2 - estrura de condiçao
+else
+end if
+
+iif ((condiçao, verdade), falso))
+
+do case - condicao com caso
+   case condicao
+       instrucao
+
+   case condicao2
+       instrucao
+
+   otherwise
+       nada for verdade
+endCase
+
+
+aArray := {1,2,3,4} - criaçao de vetor com conteudo
+
+aArray := Array(n) - cria vetor.
+
+aArray := {{1,2}, {"a", "b"}} - vetor dentro de vetor.
+
+aArray := {} - criar vetor
+
+aArray[nLinha][nColuna] - acessar matriz 
+aArray[nLinha] - acessar vetor
+
+aAdd(Array, conteudo) - adicionar conteudo no array.
+
+aDel(Array, nPosicao) - deletar uma linha do array.
+
+aSize(array, nTamanho) - excluir ultimas linhas do array.
+
+Empty(array) - verificar se esta vazio.
+
+len(array) - quantidade de linhas do array.
+
+VarInfo("test", aArray) - verificar o vetor no console
