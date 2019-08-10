@@ -26,11 +26,11 @@ Static Function ModelDef() //Não tinha teto não tinha nada
 Local oModel := MPFormModel():New("ZA1MODEL")
 Local oStruZA1 := FWFormStruct(1, "ZA1")
 Local oStruZA2 := FWFormStruct(1, "ZA2")
-Local bValid := {|oModelGrid| ValidAutor(oModelGrid)}
+//Local bValid := {|oModelGrid| ValidAutor(oModelGrid)}
 
 //Form Field (Campo do formulário)
 oModel:AddFields("ZA1MASTER",/* Owner */,oStruZA1,/* */)
-oModel:AddGrid( 'ZA2DETAIL', 'ZA1MASTER', oStruZA2, ,bValid) 
+oModel:AddGrid( 'ZA2DETAIL', 'ZA1MASTER', oStruZA2, ,)//bValid) 
 oModel:SetRelation( 'ZA2DETAIL', { {'ZA2_FILIAL', "xFilial('ZA2')"},;
  {"ZA2_MUSICA" , "ZA1_MUSICA"} }, ZA2->( IndexKey( 1 ) ) )
 
@@ -62,33 +62,3 @@ oView:EnableTitleView('ZA2_VIEW') //habilita a descricao do submodelo
 
 Return oView
 
-Static Function ValidAutor(oModelGrid)
-
-Local lRet := .F.
-Local cCodAutor := oModelGrid:GetValue('ZA2_AUTOR')
-                                  //  (CAMPO, NUMERO DA LINHA)
-/* 1) Buscar na ZA0 o registro do autor que está sendo inserido no GRID
-   2) Pegar a data de falescimento
-   3) Se a data de falescimento não estiver em branco, bloquear a inclusão exibindo a mensagem de erro */
-
-/* Guardar a area ativa e a area da tabela
-   Abrir a tabela ZA0
-   Setar o indice da ZA0(indice que contenha filial + código)
-   Buscar o registro filtrando o código especifico
-   Se eu achar o registro eu avalio o campo de data de falescimento
-   Restaurar a area da tabela e a area ativa*/
-
-Local aArea := GetArea()
-Local aAreaZA0 := ZA0->(GetArea())
-Local cMensagem := ''
-
-DbSelectArea("ZA0")
-ZA0->(DbSetOrder(3))
-
-If 
-
-
-Endif
-
-
-Return lRet
