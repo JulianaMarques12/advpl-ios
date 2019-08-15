@@ -29,16 +29,11 @@ Return oModel
 
 Static Function PosVldAutor(oModelField)
 Local lTudoOk := .T.
-Local dFalec := oModelField:GetValue("ZA0_DTAFAL")
-Local cNome := oModelField:GetValue("ZA0_NOME")
-If dFalec > Date()
+Local dFalec := oModelField:GetValue("ZA0_DTAFAL") //Recebe o valor do campo de data na tabela
+
+If dFalec > Date() // Verifica se o valor da tabela é maior que a data atual
      lTudoOk := .F.
     Help( ,, 'HELP',, 'Não adivinhe o futuro', 1, 0,,,,,, {"Digite uma data menor " + dtoc(date())})
-
-ElseIf 'RICARDO' $ UPPER(cNome) .or. Empty(cNome)
-     lTudoOk := .F.
-
-Help( ,, 'HELP',, 'Ele não pode estar aqui', 1, 0,,,,,, {"Digite um nome valido"})
 
 Endif
 Return lTudoOk

@@ -898,7 +898,7 @@ aAdd( aSX3, { ;
 	{ 'N'																	, .T. }, ; //X3_BROWSE
 	{ 'A'																	, .T. }, ; //X3_VISUAL
 	{ 'R'																	, .T. }, ; //X3_CONTEXT
-	{ ''																	, .T. }, ; //X3_OBRIGAT
+	{ 'x'																	, .T. }, ; //X3_OBRIGAT
 	{ ''																	, .T. }, ; //X3_VLDUSER
 	{ ''																	, .T. }, ; //X3_CBOX
 	{ ''																	, .T. }, ; //X3_CBOXSPA
@@ -1048,7 +1048,7 @@ aAdd( aSX3, { ;
 	{ 'S'																	, .T. }, ; //X3_BROWSE
 	{ 'A'																	, .T. }, ; //X3_VISUAL
 	{ 'R'																	, .T. }, ; //X3_CONTEXT
-	{ ''																	, .T. }, ; //X3_OBRIGAT
+	{ 'x'																	, .T. }, ; //X3_OBRIGAT
 	{ 'ExistCpo("ZA1")'														, .T. }, ; //X3_VLDUSER
 	{ ''																	, .T. }, ; //X3_CBOX
 	{ ''																	, .T. }, ; //X3_CBOXSPA
@@ -1087,7 +1087,7 @@ aAdd( aSX3, { ;
 	{ Chr(120) + Chr(32) + Chr(32) + Chr(32) + Chr(32) + ;
 	Chr(32) + Chr(32) + Chr(32) + Chr(120) + Chr(32) + ;
 	Chr(32) + Chr(32) + Chr(32) + Chr(32) + Chr(32)							, .T. }, ; //X3_USADO
-	{ 'IIF(!INCLUI, POSICIONE("ZA1", 1, XFILIAL("ZA1") + ZA4->ZA4_MUSICA, "ZA1_TITULO"), "")', .T. }, ; //X3_RELACAO
+	{ 'IIF(!INCLUI, POSICIONE("ZA1", 1, XFILIAL("ZA1") + ZA8->ZA8_MUSICA, "ZA1_TITULO"), "")', .T. }, ; //X3_RELACAO
 	{ ''																	, .T. }, ; //X3_F3
 	{ 0																		, .T. }, ; //X3_NIVEL
 	{ Chr(120) + Chr(120)													, .T. }, ; //X3_RESERV
@@ -2027,63 +2027,8 @@ AutoGrLog( "Ínicio da Atualização" + " SX9" + CRLF )
 aEstrut := { "X9_DOM"    , "X9_IDENT"  , "X9_CDOM"   , "X9_EXPDOM" , "X9_EXPCDOM", "X9_PROPRI" , "X9_LIGDOM" , ;
              "X9_LIGCDOM", "X9_CONDSQL", "X9_USEFIL" , "X9_VINFIL" , "X9_CHVFOR" , "X9_ENABLE" }
 
-
 //
-// Domínio ZA1
-//
-aAdd( aSX9, { ;
-	'ZA1'																	, ; //X9_DOM
-	'003'																	, ; //X9_IDENT
-	'ZA8'																	, ; //X9_CDOM
-	'ZA1_MUSICA'															, ; //X9_EXPDOM
-	'ZA8_MUSICA'															, ; //X9_EXPCDOM
-	'U'																		, ; //X9_PROPRI
-	'1'																		, ; //X9_LIGDOM
-	'N'																		, ; //X9_LIGCDOM
-	''																		, ; //X9_CONDSQL
-	'S'																		, ; //X9_USEFIL
-	'S'																		, ; //X9_VINFIL
-	'S'																		, ; //X9_CHVFOR
-	'S'																		} ) //X9_ENABLE
-
-//
-// Domínio ZA3
-//
-aAdd( aSX9, { ;
-	'ZA3'																	, ; //X9_DOM
-	'002'																	, ; //X9_IDENT
-	'ZA8'																	, ; //X9_CDOM
-	'ZA8_ALBUM'																, ; //X9_EXPDOM
-	'ZA8_ALBUM'																, ; //X9_EXPCDOM
-	'U'																		, ; //X9_PROPRI
-	'1'																		, ; //X9_LIGDOM
-	'N'																		, ; //X9_LIGCDOM
-	''																		, ; //X9_CONDSQL
-	'S'																		, ; //X9_USEFIL
-	'S'																		, ; //X9_VINFIL
-	'S'																		, ; //X9_CHVFOR
-	'S'																		} ) //X9_ENABLE
-
-//
-// Domínio ZA7
-//
-aAdd( aSX9, { ;
-	'ZA7'																	, ; //X9_DOM
-	'001'																	, ; //X9_IDENT
-	'ZA8'																	, ; //X9_CDOM
-	'ZA7_CODIGO'															, ; //X9_EXPDOM
-	'ZA8_PLAY'																, ; //X9_EXPCDOM
-	'U'																		, ; //X9_PROPRI
-	'1'																		, ; //X9_LIGDOM
-	'N'																		, ; //X9_LIGCDOM
-	''																		, ; //X9_CONDSQL
-	'S'																		, ; //X9_USEFIL
-	'S'																		, ; //X9_VINFIL
-	'S'																		, ; //X9_CHVFOR
-	'S'																		} ) //X9_ENABLE
-
-//
-// Atualizando dicionário
+// Atualizando dicionáriou
 //
 oProcess:SetRegua2( Len( aSX9 ) )
 

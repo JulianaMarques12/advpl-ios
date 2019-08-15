@@ -27,10 +27,11 @@ Local oModel := MPFormModel():New("ZA1MODEL")
 Local oStruZA1 := FWFormStruct(1, "ZA1")
 Local oStruZA2 := FWFormStruct(1, "ZA2")
 //Local bValid := {|oModelGrid| ValidAutor(oModelGrid)}
+Local bValidNm := {|oModel| u_ValidNm(oModel) }
 
 //Form Field (Campo do formulário)
-oModel:AddFields("ZA1MASTER",/* Owner */,oStruZA1,/* */)
-oModel:AddGrid( 'ZA2DETAIL', 'ZA1MASTER', oStruZA2, ,)//bValid) 
+oModel:AddFields("ZA1MASTER",/* Owner */,oStruZA1,/* */,bValidNm)
+oModel:AddGrid( 'ZA2DETAIL', 'ZA1MASTER', oStruZA2, ) //bValid) 
 oModel:SetRelation( 'ZA2DETAIL', { {'ZA2_FILIAL', "xFilial('ZA2')"},;
  {"ZA2_MUSICA" , "ZA1_MUSICA"} }, ZA2->( IndexKey( 1 ) ) )
 
@@ -62,3 +63,22 @@ oView:EnableTitleView('ZA2_VIEW') //habilita a descricao do submodelo
 
 Return oView
 
+User Function ValidNm(onModel)
+
+
+local aAreaZa1 := GetArea('ZA1')
+
+local flag := .T.
+ZA1->(DbSetorder(2))
+if ZA1 -> (DbSeek(xFilial("ZA1")+onModel:GetValue('ZA1_TITULO')))
+
+flag := .F.
+
+Help( ,, 'HELP','', 'Essa música já existe. Inclua uma música diferente', 1, 0)
+
+
+End if
+
+restarea(aAreaZa1)
+
+return flag

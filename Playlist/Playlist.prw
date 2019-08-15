@@ -7,7 +7,12 @@ oBrowse:SetAlias("ZA7")
 
 /* Se Utiliza este método quando o nome da função principal não possui o mesmo
 nome do fonte .prw */
-oBrowse:SetMenuDef('teste') 
+oBrowse:SetMenuDef('Playlist') 
+oBrowse:SetDescription('Premium/Comum') //Legenda Premium/Status do usuario
+oBrowse:AddLegend( "ZA7_PREMIUM==.T.", "GREEN", "Premium" ) 
+oBrowse:AddLegend( "ZA7_PREMIUM==.F.", "YELLOW"  , "Comum" )
+
+
 oBrowse:Activate() // \o/
 
 Return 
@@ -15,14 +20,14 @@ Return
 //Função que pertence somente a este fonte
 Static Function Menudef()
  
-Return FWMVCMenu('teste') //Menu Padrão com C.R.U.D.
+Return FWMVCMenu('Playlist') //Menu Padrão com C.R.U.D.
 
 //MVC - Model (Dados e regra de negócio) 
 //      View (Interface) 
 //      Controller (dentro da lib)
 
 
-Static Function ModelDef() //Não tinha teto não tinha nada
+Static Function ModelDef() 
 Local oModel := MPFormModel():New("ZA7MODEL")
 Local oStruZA7 := FWFormStruct(1, "ZA7")
 Local oStruZA8 := FWFormStruct(1, "ZA8")
@@ -37,8 +42,9 @@ Local oStruConsulta
 oModel:AddFields("ZA7MASTER",/* Owner */,oStruZA7,/* */, bValidZA7 )
 //oStruConsulta:RemoveField("ZA7_FILIAL")
 oModel:AddGrid( 'ZA8DETAIL', 'ZA7MASTER', oStruZA8,/*bLinePre*/,bValidZA8)
+oModel:GetModel( 'ZA8DETAIL' ):SetLPre(bValidZA8) // Faz a validação Premium enquanto o usuário adiciona as músicas
 
-oModel:GetModel( 'ZA8DETAIL' ):SetUniqueLine( { "ZA8_MUSICA"})
+oModel:GetModel( 'ZA8DETAIL' ):SetUniqueLine( { "ZA8_MUSICA"}) // Garante que o código da música não será repetido
 oModel:SetRelation( 'ZA8DETAIL', { {'ZA8_FILIAL', "xFilial('ZA8')"},;
  {"ZA8_PLAY" , "ZA7_CODIGO"} }, ZA8->( IndexKey( 1 ) ) )
 
@@ -59,6 +65,9 @@ oView:SetModel(ModelDef()) //return do ModelDef para SetModel
 oStruct:RemoveField("ZA7_FILIAL")
 oStructZA8:RemoveField("ZA8_FILIAL")
 oStructZA8:RemoveField("ZA8_PLAY")
+oStructZA8:RemoveField("ZA8_ALBUM")
+//-----------------------------------
+
 
 
               //ID       , Estrutura, ID do Model
@@ -81,10 +90,10 @@ Return oView
 Static Function ValidZA8(oModelGrid)
 
 Local lOk := .T.
-Local lPremium := oModelGrid:GetModel("ZA7MASTER"):GetValue('ZA7MASTER', "ZA7_PREMIU")
-Local nMusicas := oModelGrid:GetModel():GetModel("ZA8DETAIL"):Length() 
+Local lPremium := oModelGrid:GetModel("ZA7MASTER"):GetValue('ZA7MASTER', "ZA7_PREMIU") // Verifica se o usuário é premium
+Local nMusicas := oModelGrid:GetModel():GetModel("ZA8DETAIL"):Length(.T.) // Verifica a quant. de linhas do grid (ignora linhas deletadas(.T.) )
 
-If nMusicas > 5 .And. lPremium == .F.
+If nMusicas > 5 .And. lPremium == .F.// Impede que a playlist possua mais que 5 músicas se o usuário não for premium.
   lOk := .F.
 
   Help(NIL, NIL, "Você não pode adicionar mais músicas", NIL, "Você não possui uma playlist Premium", 1, 0, NIL, NIL, NIL, NIL, NIL, {"Volte e selecione a opção Premium"})
@@ -93,11 +102,11 @@ Endif
 
 Return lOk
 
-
+//Validação data Futura
 Static Function ValidZA7(oModelField)
-Local dData := oModelField:GetValue("ZA7_DATA")
+Local dData := oModelField:GetValue("ZA7_DATA") //Recebe o valor do campo de data na tabela
 Local lTudoOk := .T.
-If dData > Date()
+If dData > Date() // Verifica se o valor da tabela é maior que a data atual
     lTudoOk := .F.
     Help(NIL, NIL, "Data Futura", NIL, "Você não pode colocar uma data de criação futura", 1, 0, NIL, NIL, NIL, NIL, NIL, {"Coloque a data atual."})
 
