@@ -10,7 +10,7 @@ nome do fonte .prw */
 oBrowse:SetMenuDef('Playlist') 
 oBrowse:SetDescription('Premium/Comum') //Legenda Premium/Status do usuario
 oBrowse:AddLegend( "ZA7_PREMIUM==.T.", "GREEN", "Premium" ) 
-oBrowse:AddLegend( "ZA7_PREMIUM==.F.", "YELLOW"  , "Comum" )
+oBrowse:AddLegend( "ZA7_PREMIUM==.F.", "RED"  , "Comum" )
 
 
 oBrowse:Activate() // \o/
@@ -63,8 +63,10 @@ oView:SetModel(ModelDef()) //return do ModelDef para SetModel
 
 //Remove os campos padrões do Grid
 oStruct:RemoveField("ZA7_FILIAL")
+oStruct:RemoveField("ZA7_PATH")
 oStructZA8:RemoveField("ZA8_FILIAL")
 oStructZA8:RemoveField("ZA8_PLAY")
+oStructZA8:RemoveField("ZA8_FILE")
 oStructZA8:RemoveField("ZA8_ALBUM")
 //-----------------------------------
 
